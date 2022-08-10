@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+</head>
+
+<body>
+
+
+    <div class="w-full mont text-white flex flex-col justify-between h-screen py-8 px-6 overflow-hidden">
+
+        <div class="relative flex items-center justify-center">
+            <div class="my-8 w-11/12 md:w-3/4 mx-auto clip clip-full h-0 overflow-hidden bg-no-repeat"></div>
+            <h1 class="name absolute text-6xl md:text-7xl opacity-0">TH<span class="text-9xl">R</span>IFT</h1>
+            <h1 class="text-9xl tag absolute opacity-0">Fashion Store</h1>
+        </div>
+        <footer class="relative footer opacity-0 flex justify-end">
+            <div class="absolute bottom-0 mb-8 w-8 flex flex-col items-center">
+                <i class="text-xl transition-transform transform hover:scale-110 cursor-pointer fab fa-instagram"></i>
+                <i
+                    class="text-xl transition-transform transform hover:scale-110 cursor-pointer my-7 fab fa-linkedin-in"></i>
+                <i class="text-xl transition-transform transform hover:scale-110 cursor-pointer fab fa-twitter"></i>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
+    <script>
+        var tl = gsap.timeline();
+
+        tl.to(".clip", {
+            height: "70vh",
+            ease: "expo.inOut",
+            duration: 2
+        });
+
+        tl.to(
+            ".clip",
+            {
+                backgroundSize: "100%",
+                ease: "power4.inOut",
+                duration: 2
+            },
+            0
+        );
+
+        tl.to(".clip", {
+            duration: 2,
+            ease: "expo.inOut",
+            clipPath: "polygon(0 15%, 100% 15%, 100% 55%, 0 55%)"
+        });
+
+        tl.to(
+            ".nav, .footer",
+            {
+                duration: 2,
+                ease: "expo.inOut",
+                opacity: 1
+            },
+            "-=1.5"
+        );
+
+        tl.to(
+            ".name",
+            {
+                y: "-50%",
+                opacity: 1.2,
+                duration: 2,
+                ease: "expo.inOut"
+            },
+            "-=2.5"
+        );
+        tl.to(
+            ".tag",
+            {
+                y: "-200%",
+                opacity: 0.5,
+                duration: 2.5,
+                ease: "expo.inOut"
+            },
+            "-=2.5"
+        );
+
+// tl.to(
+//   ".footer:before",
+//   {
+//     height: "150px",
+//     duration: 2,
+//     ease: "expo.inOut"
+//   },
+//   "-=1.5"
+// );
+
+    </script>
+
+</body>
+
+</html>

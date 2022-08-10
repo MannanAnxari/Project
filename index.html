@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<style>
+
+</style>
+
+<body>
+
+
+  <div class="main py-8 px-6">
+    <nav class="nav flex opacity-0 items-center justify-center md:justify-between text-white">
+      <h1 class="text-4xl">TS</h1>
+      <ul class="flex items-center justify-between">
+        <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="home_button">
+          Home
+        </li>
+        <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="about_button">
+          About
+        </li>
+        <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="product_button">
+          Product
+        </li>
+        <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="contact_button">
+          Contact
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div id="content"></div>
+  <div class="cursor"></div>
+
+
+  <script>
+    $('#content').load('home.html');
+
+    $('#home_button').click(() => {
+      $('#content').load('home.html');
+    })
+
+    $('#about_button').click(() => {
+      $('#content').load('about.html');
+    })
+    $('#product_button').click(() => {
+      $('#content').load('product.html');
+    })
+    $('#contact_button').click(() => {
+      $('#content').load('contact.html');
+    })
+  </script>
+
+  <script>
+    const updateProperties = (elem, state) => {
+      elem.style.setProperty('--x', `${state.x}px`)
+      elem.style.setProperty('--y', `${state.y}px`)
+      elem.style.setProperty('--width', `${state.width}px`)
+      elem.style.setProperty('--height', `${state.height}px`)
+      elem.style.setProperty('--radius', state.radius)
+      elem.style.setProperty('--scale', state.scale)
+    }
+
+    document.querySelectorAll('.cursor').forEach(cursor => {
+      let onElement
+
+      const createState = e => {
+        const defaultState = {
+          x: e.clientX,
+          y: e.clientY,
+          width: 40,
+          height: 40,
+          radius: '50%'
+        }
+
+        const computedState = {}
+
+        if (onElement != null) {
+          const { top, left, width, height } = onElement.getBoundingClientRect()
+          const radius = window.getComputedStyle(onElement).borderTopLeftRadius
+
+          computedState.x = left + width / 2
+          computedState.y = top + height / 2
+          computedState.width = width
+          computedState.height = height
+          computedState.radius = radius
+        }
+
+        return {
+          ...defaultState,
+          ...computedState
+        }
+      }
+
+      document.addEventListener('mousemove', e => {
+        const state = createState(e)
+        updateProperties(cursor, state)
+      })
+
+      document.querySelectorAll('.mouseactive').forEach(elem => {
+        elem.addEventListener('mouseenter', () => (onElement = elem))
+        elem.addEventListener('mouseleave', () => (onElement = undefined))
+      })
+    })
+
+  </script>
+
+  <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script>
+    const glitchEls = document.querySelectorAll('.glitch-text');
+
+    glitchEls.forEach(el => {
+      var glitchTl = gsap.timeline({ scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom 15%', toggleActions: 'play reverse play reverse' }, ease: 'linear' });
+
+      glitchTl.to(el, {
+        duration: 1.75,
+        scrambleText: {
+          text: el.innerText,
+          chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789/;\[]=-~!@#$%^&*()+{}:?><€¡¥×«»¶¿çµñ©æáßðøöóíúüþéåä",
+          tweenLength: false,
+          speed: .65,
+          revealDelay: .4
+        }
+      })
+
+    })
+
+
+  </script>
+</body>
+
+</html>

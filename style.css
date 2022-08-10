@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap");
+
+body {
+    background: #0e192f;
+    color: white;
+}
+
+::selection{
+    background: transparent;
+    color: #41a5e8;
+}
+
+::-webkit-scrollbar{
+    background-color: transparent;
+    width: 3px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(255, 255, 255);
+}
+
+.mont {
+    font-family: "Montserrat", sans-serif;
+}
+
+.clip {
+    background: url("./assets/img/bg/1.jpg");
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.clip-full {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.nav ul li span {
+    position: absolute;
+    width: 0.4rem;
+    height: 0.4rem;
+    background: white;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -3px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.6s;
+}
+
+.nav ul li:hover span {
+    opacity: 1;
+}
+
+.name {
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, 200%);
+}
+
+.tag {
+    left: 50%;
+    width: 100%;
+    top: 100%;
+    text-align: center;
+    transform: translate(-50%, 0);
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.footer::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 150px;
+    border-radius: 3px;
+    background: white;
+    bottom: 0;
+    right: 1rem;
+}
+
+.footer div {
+    bottom: 150px;
+}
+
+
+
+/* -----------------cursor-------------- */
+
+
+html {
+    cursor: url("data:image/svg+xml,%3Csvg height='6' width='6' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' fill='%23eee' r='4'/%3E%3C/svg%3E") 3 3, auto;
+}
+
+  
+.cursor {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--width);
+    height: var(--height);
+    transform: translate(calc(var(--x) - var(--width) / 2), calc(var(--y) - var(--height) / 2)); 
+    transition: 150ms width cubic-bezier(0.39, 0.575, 0.565, 1),
+        150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
+        150ms transform cubic-bezier(0.39, 0.575, 0.565, 1);
+    z-index: 1;
+    pointer-events: none;
+    will-change: transform;
+}
+
+@media (pointer: fine) {
+    .cursor {
+        display: block; 
+    }
+}
+
+.cursor::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius);
+    border: 2px solid #41a5e8;
+    opacity: var(--scale); 
+    transform: scale(var(--scale));
+    transition: 300ms opacity cubic-bezier(0.39, 0.575, 0.565, 1),
+        300ms transform cubic-bezier(0.39, 0.575, 0.565, 1),
+        150ms border-radius cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+ 
+ 
+.mouseactive:hover {
+    color: #41a5e8;
+    border-radius: .5rem;
+}
+
+/* ------------Mouse------------- */

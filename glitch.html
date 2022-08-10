@@ -1,0 +1,94 @@
+<script src="https://unpkg.com/splitting/dist/splitting.js"></script>
+<script src="https://unpkg.com/scroll-out/dist/scroll-out.min.js"></script>
+
+<style>
+    body {
+        background: #7e05d7;
+    }
+
+    .page {
+        height: 100vh;
+        overflow: auto;
+    }
+
+    .text {
+        align-items: center;
+        color: #fff;
+        display: flex;
+        font-size: 3rem;
+        height: 100vh;
+        justify-content: center;
+        text-align: center;
+        width: 100vw;
+    }
+
+    @media (min-width: 768px) {
+        .text {
+            font-size: 5rem;
+        }
+    }
+
+
+
+    .text--blocks [data-scroll='out'] .char {
+        visibility: hidden;
+    }
+
+    .text--blocks [data-scroll='in'] {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .text--blocks [data-scroll='in'] .char {
+        transition-delay: 0.5s;
+    }
+
+    .text--blocks [data-scroll='in']:after {
+        content: '';
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: #fff;
+        animation: block 0.5s 0.25s both;
+    }
+
+    @keyframes block {
+        0% {
+            -webkit-transform: translate(-110%, 0);
+            transform: translate(-110%, 0);
+        }
+
+        45%,
+        55% {
+            -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+        }
+
+        100% {
+            -webkit-transform: translate(110%, 0);
+            transform: translate(110%, 0);
+        }
+    }
+</style>
+
+<div class="page">
+    <div class="text">Scroll for text Animation!</div>
+    <div class="text">
+        <p class="text text--blocks" data-scroll="out" data-splitting="">First</p>
+    </div>
+</div>
+<script>
+    var _window = window, Splitting = _window.Splitting, ScrollOut = _window.ScrollOut;
+    Splitting();
+    ScrollOut({
+        targets: '.word',
+        scrollingElement: '.page'
+    });
+
+
+
+</script>
