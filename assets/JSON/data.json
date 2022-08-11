@@ -1,0 +1,58 @@
+[
+  {
+    "image_url": "assets/img/shoe-1.png",
+    "before_price": "150",
+    "after_price": "120",
+    "discount": "15",
+    "name": "mens shoes DN 23XX, new product"
+  },
+  {
+    "image_url": "assets/img/shoe-2.png",
+    "before_price": "120",
+    "after_price": "105",
+    "discount": "15",
+    "name": "mens shoes NN 24XY"
+  },
+  {
+    "image_url": "assets/img/shoe-3.png",
+    "before_price": "130/",
+    "after_price": "110",
+    "discount": "15",
+    "name": "mens shoes DFN 46BX, new product"
+  },
+  {
+    "image_url": "assets/img/shoe-4.png",
+    "before_price": "140",
+    "after_price": "105",
+    "discount": "15",
+    "name": "mens shoes FG 1XYY "
+  },
+  {
+    "image_url": "assets/img/shoe-5.png",
+    "before_price": "120",
+    "after_price": "105",
+    "discount": "15",
+    "name": "womens shoes RF 48CX, new product5"
+  },
+  {
+    "image_url": "assets/img/shoe-6.png",
+    "before_price": "180",
+    "after_price": "150",
+    "discount": "15",
+    "name": "womens shoes TH 10GG"
+  },
+  {
+    "image_url": "assets/img/shoe-7.png",
+    "before_price": "200",
+    "after_price": "175",
+    "discount": "15",
+    "name": "womens shoes DNS 45RR, new product7"
+  },
+  {
+    "image_url": "assets/img/shoe-8.png",
+    "before_price": "190",
+    "after_price": "160",
+    "discount": "15",
+    "name": "womens shoes IP 127XC, new product8"
+  }
+]

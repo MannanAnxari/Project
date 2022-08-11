@@ -10,15 +10,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://kit.fontawesome.com/20b4506959.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.2/dist/flowbite.min.css" />
+
+  <script src="https://unpkg.com/flowbite@1.5.2/dist/flowbite.js"></script>
+
+  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="style.css">
 
 </head>
 <style>
   .User-area {
-    position: relative; 
-    z-index: 999999; 
+    position: relative;
+    z-index: 999999;
     width: 100%;
     height: 100%;
   }
@@ -28,16 +34,16 @@
     border: 2px solid #fff;
     box-shadow: 0px 0px 12px -5px #000;
   }
- 
-  .User-area>.User-avtar .img  { 
+
+  .User-area>.User-avtar .img {
     width: 40px;
     height: 40px;
   }
- 
-  .User-area>.User-avtar .img img { 
-   filter: invert(1);
+
+  .User-area>.User-avtar .img img {
+    filter: invert(1);
   }
- 
+
 
   .User-Dropdown {
     display: none;
@@ -89,7 +95,7 @@
     color: #1787e0;
     transition: all 0.2s ease-out;
   }
- 
+
   .User-Dropdown>li:before {
     content: '';
     width: 0px;
@@ -115,18 +121,19 @@
 <body>
 
 
-  <div class="main py-8 px-6">
-    <nav class="nav flex opacity-0 items-center justify-center md:justify-between text-white">
-      <h1 class="text-4xl">TS</h1>
+  <!-- <nav class="nav flex opacity-0 items-center justify-center md:justify-between text-white">
+      <div class="logo">
+        <img src="assets/img/Logo.png" class="w-28" style="filter: saturate(0) brightness(1.5);" alt="">
+      </div>
       <ul class="flex items-center justify-between">
         <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="home_button">
           Home
         </li>
-        <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="about_button">
-          About
-        </li>
         <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="product_button">
           Product
+        </li>
+        <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="about_button">
+          About
         </li>
         <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="contact_button">
           Contact
@@ -147,14 +154,88 @@
             </ul>
           </div>
         </li>
-      </ul>
-    </nav>
-  </div>
+      </ul> 
+    </nav> -->
+  <nav class="bg-transparent border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+    <div class="container flex flex-wrap justify-between items-center mx-auto">
+      <a href="#" class="flex items-center">
+        <img src="assets/img/Logo.png" class="w-28" style="filter: saturate(0) brightness(1.5);" alt="">
+
+      </a>
+      <div class="flex items-center md:order-2">
+
+        <button type="button"
+          class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 ring-2 ring-gray-300 dark:ring-gray-600"
+          id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
+          data-dropdown-placement="bottom">
+          <span class="sr-only">Open user menu</span>
+          <img class="w-8 h-8 rounded-full" style="filter: invert(1);"
+            src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="user photo">
+        </button>
+        <span class="block px-4 text-sm font-medium truncate text-white"> Welcome, <span
+            id="username"></span>!
+        </span>
+        <div
+          class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+          id="user-dropdown">
+          <ul class="py-1" aria-labelledby="user-menu-button">
+            <li>
+              <a onclick="removeItem()" href="#"
+                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                out</a>
+            </li>
+          </ul>
+        </div>
+        <button data-collapse-toggle="mobile-menu-2" type="button"
+          class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="mobile-menu-2" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
+        <ul
+          class="flex flex-col p-4 mt-4   rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0  dark:bg-gray-800 md:dark:bg-gray-900  ">
+          <li>
+            <a href="#"
+              class="block py-2 pr-4 pl-3 mouseactive text-white rounded md:bg-transparent md:p-0 dark:text-white"
+              aria-current="page" id="home_button">Home</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block py-2 pr-4 pl-3 mouseactive text-white rounded md:bg-transparent md:p-0 dark:text-white"
+              aria-current="page" id="product_button">PRODUCT</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block py-2 pr-4 pl-3 mouseactive text-white rounded md:bg-transparent md:p-0 dark:text-white"
+              aria-current="page" id="about_button">ABOUT</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block py-2 pr-4 pl-3 mouseactive text-white rounded md:bg-transparent md:p-0 dark:text-white"
+              aria-current="page" id="contact_button">CONTACT</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
   <div id="content"></div>
   <div class="cursor"></div>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <script>
+
+
     $('.User-avtar').click(function () {
       if ($(".User-Dropdown").hasClass("U-open")) {
         $('.User-Dropdown').removeClass("U-open");
@@ -181,11 +262,7 @@
           localStorage.setItem(key, userName);
           window.location.href = '/'
         });
-      // $('.swal-button--confirm').click(() => {
 
-      //     console.log('Hello'); 
-
-      // })
     }
     else {
       document.getElementById('username').innerHTML = user;
@@ -205,9 +282,7 @@
       $('#contact_button').click(() => {
         $('#content').load('contact.html');
       })
-    }
-
-
+    } 
   </script>
 
   <script>
