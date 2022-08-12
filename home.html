@@ -1,91 +1,223 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Home</title>
-</head>
-
-<body>
-
-
-    <div class="w-full mont text-white flex flex-col justify-between h-screen py-8 px-6 overflow-hidden">
-
-        <div class="relative flex items-center justify-center">
-            <div class="my-8 w-11/12 md:w-3/4 mx-auto clip clip-full h-0 overflow-hidden bg-no-repeat"></div>
-            <h1 class="name absolute text-6xl md:text-7xl opacity-0">TH<span class="text-9xl">R</span>IFT</h1>
-            <h1 class="text-9xl tag absolute opacity-0 milk ls-12">Fashion Store</h1>
-        </div>
-        <!-- <footer class="relative footer opacity-0 flex justify-end">
-            <div class="absolute bottom-0 mb-8 w-8 flex flex-col items-center">
-                <i class="text-xl transition-transform transform hover:scale-110 cursor-pointer fab fa-instagram"></i>
-                <i
-                    class="text-xl transition-transform transform hover:scale-110 cursor-pointer my-7 fab fa-linkedin-in"></i>
-                <i class="text-xl transition-transform transform hover:scale-110 cursor-pointer fab fa-twitter"></i>
-            </div>
-        </footer> -->
+<div class="w-full mont text-white flex flex-col justify-between h-full py-8 px-6 overflow-hidden">
+    <div class="relative flex items-center justify-center">
+        <div class="my-8 w-11/12 md:w-3/4 mx-auto clip clip-full h-0 overflow-hidden bg-no-repeat"></div>
+        <!-- <h1 class="name absolute text-6xl md:text-7xl opacity-0">TH<span class="text-9xl">R</span>IFT</h1> -->
+        <div class="home-logo main-img name absolute text-6xl md:text-7xl opacity-0"></div>
+        <h1 class="text-9xl tag absolute opacity-0 milk ls-12">Fashion Store</h1>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
-    <script>
-        var tl = gsap.timeline();
+</div>
 
-        tl.to(".clip", {
-            height: "70vh",
-            ease: "expo.inOut",
-            duration: 2
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<div class="main-slider opacity-0">
+    <h1 class="lg-title mx-40 text-center">Special Shoes Discount Offer</h1>
+    <p class="text-light mx-40 text-center">Sneakers are shoes primarily designed for sports or other forms of
+        physical
+        exercise,
+        but which are now also widely used for everyday casual wear.</p>
+    <div class="wrapper">
+        <div class="slider" id="slider">
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
+
+
+
+<script>
+    $.getJSON('./assets/JSON/searchData.json', function async(data) {
+        let slider_dara = ''
+        for (let i = 0; i < data.length; i++) {
+            const element = data[i];
+            slider_dara += `
+                <div class="mx-4">
+                <div class="product slider__item slider_card h-full">
+                  <div class="product-content">
+                      <div class="product-img">
+                          <img src="${element.image_url}" class="shop-item-image" alt="product image"> 
+                      </div>
+                      <div class="product-btns"> 
+                          <button type="button" class="btn-buy" onclick="goToProduct()"> See details
+                              <span><i class="fas fa-shopping-cart"></i></span>
+                          </button>
+                      </div>
+                  </div> 
+                  <div class="product-info"> 
+                      <a href="#" class="product-name text-ellipsis overflow-hidden shop-item-title trunc">${element.name}</a>
+                      <div class="flex flex-row justify-between">
+                        <div>
+                            <p class="product-price home shop-item-price">$ ${element.before_price}</p> 
+                            <p class="product-price home shop-item-price">$ ${element.after_price}</p> 
+                            </div>
+                        <p class=" shop-item-price">Alailable: 15</p> 
+                        </div>
+                  </div> 
+                  <div class="off-info">
+                      <h2 class="sm-title">${element.discount}% off</h2>
+                  </div>
+
+              </div>
+              </div>
+              `
+        }
+        document.getElementById('slider').innerHTML = slider_dara
+    }
+    );
+
+    setTimeout(() => {
+        $('.main-slider').css("opacity", "1");
+    }, 3000);
+
+
+    setTimeout(() => {
+        $(document).ready(function () {
+            $(".slider").slick({
+                arrows: true,
+                dots: false,
+                slidesToShow: 3,
+                autoplay: true,
+                speed: 900,
+                autoplaySpeed: 100000,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 550,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
         });
+    }, 1500);
+</script>
 
-        tl.to(
-            ".clip",
-            {
-                backgroundSize: "100%",
-                ease: "power4.inOut",
-                duration: 2
-            },
-            0
-        );
 
-        tl.to(".clip", {
+<script>
+
+    function updateProperties(elem, state) {
+        elem.style.setProperty('--x', `${state.x}px`)
+        elem.style.setProperty('--y', `${state.y}px`)
+        elem.style.setProperty('--width', `${state.width}px`)
+        elem.style.setProperty('--height', `${state.height}px`)
+        elem.style.setProperty('--radius', state.radius)
+        elem.style.setProperty('--scale', state.scale)
+
+    }
+
+    document.querySelectorAll('.cursor').forEach(cursor => {
+        let onElement
+
+        const createState = e => {
+            const defaultState = {
+                x: e.clientX,
+                y: e.clientY,
+                width: 40,
+                height: 40,
+                radius: '50%'
+            }
+
+            const computedState = {}
+
+            if (onElement != null) {
+                const { top, left, width, height } = onElement.getBoundingClientRect()
+                const radius = window.getComputedStyle(onElement).borderTopLeftRadius
+
+                computedState.x = left + width / 2
+                computedState.y = top + height / 2
+                computedState.width = width
+                computedState.height = height
+                computedState.radius = radius
+            }
+
+            return {
+                ...defaultState,
+                ...computedState
+            }
+        }
+
+        document.addEventListener('mousemove', e => {
+            const state = createState(e)
+            updateProperties(cursor, state)
+        })
+
+        document.querySelectorAll('.mouseactive').forEach(elem => {
+            elem.addEventListener('mouseenter', () => (onElement = elem))
+            elem.addEventListener('mouseleave', () => (onElement = undefined))
+        })
+    })
+</script>
+
+
+<script>
+    var tl = gsap.timeline();
+
+    tl.to(".clip", {
+        height: "70vh",
+        ease: "expo.inOut",
+        duration: 1.5
+    });
+
+    tl.to(
+        ".clip",
+        {
+            backgroundSize: "100%",
+            ease: "power4.inOut",
+            duration: 1.5
+        },
+        0
+    );
+
+    tl.to(".clip", {
+        duration: 2,
+        ease: "expo.inOut",
+        clipPath: "polygon(0 15%, 100% 15%, 100% 55%, 0 55%)"
+    });
+
+    tl.to(
+        ".nav, .footer",
+        {
             duration: 2,
             ease: "expo.inOut",
-            clipPath: "polygon(0 15%, 100% 15%, 100% 55%, 0 55%)"
-        });
+            opacity: 1
+        },
+        "-=1.5"
+    );
 
-        tl.to(
-            ".nav, .footer",
-            {
-                duration: 2,
-                ease: "expo.inOut",
-                opacity: 1
-            },
-            "-=1.5"
-        );
-
-        tl.to(
-            ".name",
-            {
-                y: "-50%",
-                opacity: 1.2,
-                duration: 2,
-                ease: "expo.inOut"
-            },
-            "-=2.5"
-        );
-        tl.to(
-            ".tag",
-            {
-                y: "-200%",
-                opacity: 0.65,
-                duration: 2.5,
-                ease: "expo.inOut"
-            },
-            "-=2.5"
-        );
+    tl.to(
+        ".name",
+        {
+            y: "-65%",
+            opacity: 1.2,
+            duration: 2,
+            ease: "expo.inOut"
+        },
+        "-=2.4"
+    );
+    tl.to(
+        ".tag",
+        {
+            y: "-200%",
+            opacity: 0.65,
+            duration: 2.5,
+            ease: "expo.inOut"
+        },
+        "-=2.5"
+    );
+    tl.to(
+        ".main-slider",
+        {
+            y: "-10vh",
+            opacity: 1,
+            duration: 2.6,
+            ease: "expo.inOut"
+        },
+        "-=2.5"
+    );
 
 
 
@@ -150,9 +282,6 @@
         //     },
         //     "-=0"
         // );
- 
-    </script>
 
-</body>
-
-</html>
+</script>
+<script src="assets/js/main.js"></script>

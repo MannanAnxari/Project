@@ -2,11 +2,9 @@
 <html lang="en">
 
 <head>
-  <title>Title</title>
-  <!-- Required meta tags -->
+  <title>Thrift Fashion Store - Home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -14,150 +12,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.4/tailwind.min.css">
   <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.2/dist/flowbite.min.css" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script src="https://unpkg.com/flowbite@1.5.2/dist/flowbite.js"></script>
-
-  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="style.css">
 
 </head>
-<style>
-  .User-area {
-    position: relative;
-    z-index: 999999;
-    width: 100%;
-    height: 100%;
-  }
-
-  .User-area>.User-avtar .img {
-    border-radius: 30px;
-    border: 2px solid #fff;
-    box-shadow: 0px 0px 12px -5px #000;
-  }
-
-  .User-area>.User-avtar .img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .User-area>.User-avtar .img img {
-    filter: invert(1);
-  }
-
-
-  .User-Dropdown {
-    display: none;
-    position: absolute;
-    border-radius: 7px;
-    background: #fff;
-    box-shadow: 0px 0px 8px rgba(214, 214, 214, 0.78);
-    list-style: none;
-    padding: 0 20px;
-    width: 150px;
-    margin: 0;
-    top: 55px;
-    right: 5%;
-  }
-
-  .User-Dropdown:before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    margin-left: -0.5em;
-    right: 0px;
-    box-sizing: border-box;
-    border: 7px solid black;
-    border-color: transparent transparent #fff #fff;
-    transform-origin: 0 0;
-    transform: rotate(135deg);
-    box-shadow: -3px 3px 3px -3px rgba(214, 214, 214, 0.78);
-  }
-
-  .User-Dropdown.U-open {
-    display: block;
-  }
-
-  .User-Dropdown>li {
-    padding: 0px;
-    line-height: 47px;
-    border-bottom: 1px solid rgba(215, 215, 215, 0.17);
-  }
-
-  .User-Dropdown>li:last-child {
-    border-bottom: 0px;
-  }
-
-  .User-Dropdown>li>a {
-    font-size: 13px;
-    padding: 15px 25px 16px 10px;
-    text-decoration: none;
-    color: #1787e0;
-    transition: all 0.2s ease-out;
-  }
-
-  .User-Dropdown>li:before {
-    content: '';
-    width: 0px;
-    height: 40px;
-    position: absolute;
-    background: #2196f3;
-    margin-top: 4px;
-    border-radius: 0 1px 1px 0;
-    left: 0px;
-    transition: all 0.2s ease;
-  }
-
-  .User-Dropdown>li:hover:before {
-    width: 5px;
-    border-radius: 30px;
-  }
-
-  .User-Dropdown>li a:hover {
-    margin-left: 5px;
-  }
-</style>
 
 <body>
 
+  <div id="search" class="fade">
+    <a href="#" class="close-btn" id="close-search">
+      <em class="fa fa-times"></em>
+    </a>
+    <input placeholder="Find Products Here..." id="searchdata" type="search" class="transition" />
+    <ul class="list-group" id="result"></ul>
+  </div>
 
-  <!-- <nav class="nav flex opacity-0 items-center justify-center md:justify-between text-white">
-      <div class="logo">
-        <img src="assets/img/Logo.png" class="w-28" style="filter: saturate(0) brightness(1.5);" alt="">
-      </div>
-      <ul class="flex items-center justify-between">
-        <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="home_button">
-          Home
-        </li>
-        <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="product_button">
-          Product
-        </li>
-        <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="about_button">
-          About
-        </li>
-        <li class="mx-2 px-4 py-2 text-sm relative mouseactive" id="contact_button">
-          Contact
-        </li>
-        <li class="mx-2 px-4 py-2 text-sm relative" id="user">
-          <div class="User-area">
-            <div class="User-avtar flex items-center">
-              <div class="img">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" />
-              </div>
-              <div class="content mx-3">
-                Welcome, <span id="username"></span>!
-              </div>
-            </div>
-            <ul class="User-Dropdown">
-              <li><a href="#">My Profile</a></li>  
-              <li><a onclick="removeItem()" href="#">Logout</a></li>
-            </ul>
-          </div>
-        </li>
-      </ul> 
-    </nav> -->
   <nav class="bg-transparent border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
-    <div class="container flex flex-wrap justify-between items-center mx-auto">
+    <div class="nav-container flex flex-wrap justify-between items-center mx-auto">
       <a href="#" class="flex items-center">
         <img src="assets/img/Logo.png" class="w-28" style="filter: saturate(0) brightness(1.5);" alt="">
 
@@ -172,8 +44,7 @@
           <img class="w-8 h-8 rounded-full" style="filter: invert(1);"
             src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="user photo">
         </button>
-        <span class="block px-4 text-sm font-medium truncate text-white"> Welcome, <span
-            id="username"></span>!
+        <span class="block px-4 text-sm font-medium truncate text-white"> Welcome, <span id="username"></span>!
         </span>
         <div
           class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
@@ -200,7 +71,7 @@
       </div>
       <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
         <ul
-          class="flex flex-col p-4 mt-4   rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0  dark:bg-gray-800 md:dark:bg-gray-900  ">
+          class="flex flex-col p-4 mt-4   rounded-lg  md:flex-row md:space-x-4 md:mt-0 md:text-sm md:font-medium md:border-0  dark:bg-gray-800 md:dark:bg-gray-900  ">
           <li>
             <a href="#"
               class="block py-2 pr-4 pl-3 mouseactive text-white rounded md:bg-transparent md:p-0 dark:text-white"
@@ -209,7 +80,7 @@
           <li>
             <a href="#"
               class="block py-2 pr-4 pl-3 mouseactive text-white rounded md:bg-transparent md:p-0 dark:text-white"
-              aria-current="page" id="product_button">PRODUCT</a>
+              aria-current="page" id="product_button">PRODUCTS</a>
           </li>
           <li>
             <a href="#"
@@ -221,147 +92,164 @@
               class="block py-2 pr-4 pl-3 mouseactive text-white rounded md:bg-transparent md:p-0 dark:text-white"
               aria-current="page" id="contact_button">CONTACT</a>
           </li>
+          <li>
+            <a href="#"
+              class="block py-2 pr-4 pl-3 mouseactive text-white rounded md:bg-transparent md:p-0 dark:text-white"
+              aria-current="page" id="contact_button">FEEDBACK</a>
+          </li>
+
+
+          <li>
+            <a href="#search"
+              class="block py-2 pr-4 pl-3 mouseactive text-white rounded md:bg-transparent md:p-0 dark:text-white"
+              aria-current="page" id="contact_button"> <i class="fa fa-search"></i></a>
+          </li>
 
         </ul>
       </div>
     </div>
   </nav>
 
-
-
   <div id="content"></div>
   <div class="cursor"></div>
+  <marquee><span id="location-j75"></span> <span id="date-j75"></span></marquee>
+
+  <script>
+    getLocation();
+    var j75 = document.getElementById("location-j75");
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        j75.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      j75.innerHTML = " Latitude: " + position.coords.latitude +
+        " Longitude: " + position.coords.longitude;
+    }
+
+    var now = new Date();
+    document.getElementById("date-j75").innerHTML = now;
+  </script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-  <script>
-
-
-    $('.User-avtar').click(function () {
-      if ($(".User-Dropdown").hasClass("U-open")) {
-        $('.User-Dropdown').removeClass("U-open");
-      }
-      else {
-        $('.User-Dropdown').addClass("U-open");
-      }
-    });
-    const removeItem = () => {
-      localStorage.removeItem("name");
-      window.location.href = '/'
-    }
-  </script>
-
-  <script>
-    var key = 'name';
-    let user = localStorage.getItem(key);
-    if (user === null || user === '' || user === 'null') {
-      swal("Type Username Here:", {
-        content: "input",
-      })
-        .then((value) => {
-          let userName = value;
-          localStorage.setItem(key, userName);
-          window.location.href = '/'
-        });
-
-    }
-    else {
-      document.getElementById('username').innerHTML = user;
-
-      $('#content').load('home.html');
-
-      $('#home_button').click(() => {
-        $('#content').load('home.html');
-      })
-
-      $('#about_button').click(() => {
-        $('#content').load('about.html');
-      })
-      $('#product_button').click(() => {
-        $('#content').load('product.html');
-      })
-      $('#contact_button').click(() => {
-        $('#content').load('contact.html');
-      })
-    } 
-  </script>
-
-  <script>
-    const updateProperties = (elem, state) => {
-      elem.style.setProperty('--x', `${state.x}px`)
-      elem.style.setProperty('--y', `${state.y}px`)
-      elem.style.setProperty('--width', `${state.width}px`)
-      elem.style.setProperty('--height', `${state.height}px`)
-      elem.style.setProperty('--radius', state.radius)
-      elem.style.setProperty('--scale', state.scale)
-    }
-
-    document.querySelectorAll('.cursor').forEach(cursor => {
-      let onElement
-
-      const createState = e => {
-        const defaultState = {
-          x: e.clientX,
-          y: e.clientY,
-          width: 40,
-          height: 40,
-          radius: '50%'
-        }
-
-        const computedState = {}
-
-        if (onElement != null) {
-          const { top, left, width, height } = onElement.getBoundingClientRect()
-          const radius = window.getComputedStyle(onElement).borderTopLeftRadius
-
-          computedState.x = left + width / 2
-          computedState.y = top + height / 2
-          computedState.width = width
-          computedState.height = height
-          computedState.radius = radius
-        }
-
-        return {
-          ...defaultState,
-          ...computedState
-        }
-      }
-
-      document.addEventListener('mousemove', e => {
-        const state = createState(e)
-        updateProperties(cursor, state)
-      })
-
-      document.querySelectorAll('.mouseactive').forEach(elem => {
-        elem.addEventListener('mouseenter', () => (onElement = elem))
-        elem.addEventListener('mouseleave', () => (onElement = undefined))
-      })
-    })
-
-  </script>
-
   <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
   <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-  <script>
-    const glitchEls = document.querySelectorAll('.glitch-text');
-
-    glitchEls.forEach(el => {
-      var glitchTl = gsap.timeline({ scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom 15%', toggleActions: 'play reverse play reverse' }, ease: 'linear' });
-
-      glitchTl.to(el, {
-        duration: 1.75,
-        scrambleText: {
-          text: el.innerText,
-          chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789/;\[]=-~!@#$%^&*()+{}:?><€¡¥×«»¶¿çµñ©æáßðøöóíúüþéåä",
-          tweenLength: false,
-          speed: .65,
-          revealDelay: .4
-        }
-      })
-
-    })
-
-
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 
 </html>
+
+<script>
+
+  var cartOpen = false;
+  var numberOfProducts = 0;
+
+  $('body').on('click', '.js-toggle-cart', toggleCart);
+
+  function toggleCart(e) {
+    e.preventDefault();
+    if (cartOpen) {
+      closeCart();
+      return;
+    }
+    openCart();
+  }
+
+  function openCart() {
+    cartOpen = true;
+    $('body').addClass('open');
+  }
+
+  function closeCart() {
+    cartOpen = false;
+    $('body').removeClass('open');
+  }
+
+
+
+  var changeClass = function (name) {
+    $('#search').removeAttr('class').addClass(name);
+  }
+
+
+  $(document).ready(function () {
+    $.ajaxSetup({ cache: false });
+    $('#searchdata').keyup(function () {
+      console.log();
+      if (this.value.length > 0) {
+        $(this).css("transform", "translateY(-40vh)");
+        $('#result').html('');
+        $('#state').val('');
+        var searchField = $('#searchdata').val();
+        var expression = new RegExp(searchField, "i");
+        $.getJSON('./assets/JSON/searchData.json', function (data) {
+          $.each(data, function (key, value) {
+            if (value.name.search(expression) != -1 || value.location.search(expression) != -1) {
+              $('#result').append('<li class="list-group-item link-class transition search_item flex items-center h-20" onclick="goToProduct()"><img src="' + value.image_url + '" class="img-thumbnail mx-4" /> ' + value.name + ' | <span class="text-muted">' + value.after_price + '</span></li>');
+            }
+          });
+        });
+      }
+      else {
+        $('#result').html('');
+        $(this).css("transform", "translateY(0vh)");
+      }
+    });
+
+    $('#result').on('click', 'li', function () {
+      var click_text = $(this).text().split('|');
+      $('#searchdata').val($.trim(click_text[0]));
+      $("#result").html('');
+    });
+  });
+
+
+
+  var key = 'name';
+  var user = localStorage.getItem(key);
+  if (user === null || user === '' || user === 'null') {
+    swal("Type Username Here:", {
+      content: "input",
+    })
+      .then((value) => {
+        let userName = value;
+        localStorage.setItem(key, userName);
+        window.location.href = '/'
+      });
+
+  }
+  else {
+    document.getElementById('username').innerHTML = user;
+
+    $('#content').load('home.html');
+
+    $('#home_button').click(() => {
+      $('#content').load('home.html');
+    })
+
+    $('#about_button').click(() => {
+      $('#content').load('about.html');
+    })
+    $('#product_button').click(() => {
+      $('#content').load('product.html');
+    })
+    $('#contact_button').click(() => {
+      $('#content').load('contact.html');
+    });
+
+  }
+
+  const goToProduct = () => {
+    $('#content').load('product.html');
+  }
+
+
+  function removeItem() {
+    localStorage.removeItem("name");
+    localStorage.removeItem("products");
+    window.location.href = '/'
+  } 
+</script>
