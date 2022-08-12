@@ -1355,3 +1355,8 @@ img {
         clip-path: none;
    }
 } 
+
+ 
+.footer_link:hover{
+    color: #2D9CDB;
+}

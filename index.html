@@ -95,7 +95,7 @@
           <li>
             <a href="#"
               class="block py-2 pr-4 pl-3 mouseactive text-white rounded md:bg-transparent md:p-0 dark:text-white"
-              aria-current="page" id="contact_button">FEEDBACK</a>
+              aria-current="page" id="feedback_button">FEEDBACK</a>
           </li>
 
 
@@ -105,6 +105,8 @@
               aria-current="page" id="contact_button"> <i class="fa fa-search"></i></a>
           </li>
 
+          <li style="position: fixed; right: 5px; top:5px;"><a id="coonter"></a></li>
+
         </ul>
       </div>
     </div>
@@ -113,7 +115,36 @@
   <div id="content"></div>
   <div class="cursor"></div>
   <marquee><span id="location-j75"></span> <span id="date-j75"></span></marquee>
+  <footer class="text-center opacity-0 footer">
+    <i class="fa fa-copyright"></i> 2022. All Right Reserved | Powered By <a href="https://kodrz.com/" target="_blank" class="footer_link"> KODRZ</a>
+</footer>
 
+<script>
+  
+  const goBack = () => {
+      $('#content').load('product.html');
+    
+
+}
+let goToProductDetail = () => {
+  $('#content').load('productDetail.html');
+
+
+    }
+</script>
+
+  <script>
+    var js_counter = 1;
+    if (localStorage.getItem('js_counter')) {
+        js_counter = localStorage.getItem('js_counter');
+        js_counter++;
+        localStorage.setItem('js_counter', js_counter);
+
+    } else {
+        localStorage.setItem('js_counter', js_counter);
+    }
+    document.getElementById('coonter').innerHTML = js_counter;
+</script>
   <script>
     getLocation();
     var j75 = document.getElementById("location-j75");
@@ -239,6 +270,10 @@
     $('#contact_button').click(() => {
       $('#content').load('contact.html');
     });
+    
+    $('#feedback_button').click(() => {
+        $('#content').load('feedback.html');
+      })
 
   }
 
